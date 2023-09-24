@@ -1,3 +1,4 @@
+### Português - BR
 # Gerador de Senhas Rápidas em HTML, CSS e JavaScript
 
 Bem-vindo ao Gerador de Senhas Rápidas da TechPunk! Esta é uma aplicação simples desenvolvida em HTML, CSS e JavaScript que permite gerar senhas fortes de forma rápida e conveniente.
@@ -33,3 +34,40 @@ O gerador de senhas possui um estilo moderno e agradável, mas você pode person
 ## Licença
 
 Este projeto é de código aberto e está disponível sob a Licença MIT. Sinta-se à vontade para usá-lo, modificá-lo e compartilhá-lo conforme necessário.
+
+### English - USA
+# Quick Password Generator in HTML, CSS and JavaScript
+
+Welcome to TechPunk's Quick Password Generator! This is a simple application developed in HTML, CSS and JavaScript that allows you to generate strong passwords quickly and conveniently.
+
+![Password Generator](/images/generate.png)
+
+## How to use
+
+1. Open the `index.html` file in your browser.
+
+2. Choose the desired password length by entering the desired number of characters in the "Password Length" field.
+
+3. Click the "+ New Password" button to generate a new strong password.
+
+4. The generated password will be displayed in the "Generated Password" field.
+
+5. To copy the password to the clipboard, click the copy icon.
+
+## Advanced options
+
+If you want to further customize your passwords, you can click the "Options" button to display advanced options. This will allow you to set the password length and choose between different character types such as uppercase letters, lowercase letters, numbers, and special characters.
+
+![Advanced Options](/images/copy.png)
+
+## Custom Styles
+
+The password generator has a nice, modern style, but you can customize it further by adjusting the CSS code to your preferences.
+
+```css
+/* Customize the style here */
+```
+
+## License
+
+This project is open source and available under the MIT License. Feel free to use, modify and share it as needed.
