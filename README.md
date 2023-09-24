@@ -1,3 +1,8 @@
+## Demo
+You can try a demo of the Quick Password Generator [here](https://sakemo.github.io/password-generator-js/)..
+
+Você pode experimentar uma demonstração do Gerador de Senhas Rápidas [aqui](https://sakemo.github.io/password-generator-js/).
+
 ### Português - BR
 # Gerador de Senhas Rápidas em HTML, CSS e JavaScript
 
