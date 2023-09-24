@@ -1,0 +1,111 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+body{
+    background: #002339;
+    color: #fff;
+}
+
+.cont{
+    margin: 50px;
+    margin: 12%;
+    width: 80%;
+}
+
+.display{
+    width: 100%;
+    margin-top: 50px;
+    margin-bottom: 30px;
+    background: #fff;
+    color: #333;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 26px 20px;
+    border-radius: 5px;
+}
+
+.cont h1{
+    font-weight: 500;
+    font-size: 54px;
+}
+
+.cont h1 span{
+    font-weight: 600;
+    color: #019f55;
+    border-bottom: 4px solid #019f55;
+    padding-bottom: 7px;
+}
+
+.display img{
+    width: 30px;
+    cursor: pointer;
+}
+
+.display input{
+    width: 100%;
+    border: 0;
+    outline: 0;
+    font-size: 24px;
+}
+
+.cont button img{
+    width: 28px;
+    margin-right: 10px;
+}
+
+.cont .generate{
+    border: 0;
+    outline: 0;
+    border-radius: 5px;
+    background-color: #019f55;
+    color: #fff;
+    font-size: 22px;
+    font-weight: 300;
+    display: flex;
+    align-content: center;
+    align-items: center;
+    justify-content: center;
+    padding: 16px 26px;
+    cursor: pointer;
+}
+
+button{
+    font-size: 24px;
+    padding: 0px;
+}
+
+.btns{
+    display: flex;
+    justify-content: space-between;
+}
+
+.btns .menu-btn{
+    border: 0;
+    outline: 0;
+    color: #fff;
+    background: transparent;
+    cursor: pointer;
+}
+
+.menu{
+    position: absolute;
+    width: 0%;
+    transition: all ease-in-out 0.5s;
+    transition: all ease-out 0.5s;
+}
+
+.menu input{
+    outline: 0;
+    border: 0;
+    width: 100%;
+    font-size: 15px;
+    padding: 5px;
+    margin-top: 10px;
+    border-radius: 7px;
+    display: none;
+    transition: all ease-in-out 0.5s;
+}

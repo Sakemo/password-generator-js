@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gerador de Senhas | TechPunk</title>
+    <link rel="stylesheet" href="/static/css/style.css">
+</head>
+<body>
+
+    <div class="cont">
+        <h1>Gerador Rapido de<br /><span>Senhas Fortes</span></h1>
+        <div class="display">
+            <input type="text" name="pass" id="password" placeholder="Senha Gerada">
+            <img src="/images/copy.png" onclick="CopyPass()">
+        </div>
+
+        <div class="btns">            
+            <button class="generate"><img src="images/generate.png" alt="">+ Nova Senha</button>
+            <button onclick="MenuDisplay()" class="menu-btn"><i class="fa-solid fa-chevron-right"></i> Opções</button>
+        </div>
+
+
+        <div class="menu">
+            <input type="number" id="password-length" placeholder="Tamanho da Senha">
+        </div>
+    </div>
+
+    <script src="https://kit.fontawesome.com/1f26dd467f.js" crossorigin="anonymous"></script>
+    <script src="/static/js/script.js"></script>
+</body>
+</html>
