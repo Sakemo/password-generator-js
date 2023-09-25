@@ -8,8 +8,6 @@ Você pode experimentar uma demonstração do Gerador de Senhas Rápidas [aqui](
 
 Bem-vindo ao Gerador de Senhas Rápidas da TechPunk! Esta é uma aplicação simples desenvolvida em HTML, CSS e JavaScript que permite gerar senhas fortes de forma rápida e conveniente.
 
-![Gerador de Senhas](/images/generate.png)
-
 ## Como Usar
 
 1. Abra o arquivo `index.html` no seu navegador.
@@ -25,8 +23,6 @@ Bem-vindo ao Gerador de Senhas Rápidas da TechPunk! Esta é uma aplicação sim
 ## Opções Avançadas
 
 Se você deseja personalizar ainda mais suas senhas, você pode clicar no botão "Opções" para exibir as opções avançadas. Isso permitirá que você defina o tamanho da senha e escolha entre diferentes tipos de caracteres, como letras maiúsculas, letras minúsculas, números e caracteres especiais.
-
-![Opções Avançadas](/images/copy.png)
 
 ## Estilos Personalizados
 
