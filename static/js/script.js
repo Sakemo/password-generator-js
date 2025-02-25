@@ -12,9 +12,9 @@ const toggleOptionsBtn = document.getElementById('toggle-options');
 const optionsPanel     = document.getElementById('options-panel');
 const savedCardsCont   = document.querySelector('.saved-cards');
 const clearAllBtn      = document.getElementById('clear-all');
-const darkModeToggle   = document.getElementById('dark-mode-toggle');
+const themeToggle      = document.getElementById('theme-toggle');
 
-// Constantes e conjuntos de caracteres
+// Paleta de caracteres para geração de senhas
 const DEFAULT_LENGTH = 12;
 const UPPERCASE      = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
 const LOWERCASE      = "abcdefghijklmnopqrstuvwxyz";
@@ -22,7 +22,7 @@ const NUMBERS        = "0123456789";
 const SPECIAL        = '@#$%&*()_+§=/-."^><[]{}´`?/:;|';
 const CHAR_SETS      = [UPPERCASE, LOWERCASE, NUMBERS, SPECIAL];
 
-// Array que armazenará as senhas salvas
+// Array para armazenar as senhas salvas
 let savedPasswords = [];
 
 // Carrega as senhas salvas do localStorage
@@ -34,50 +34,52 @@ const loadSavedPasswords = () => {
   updateSavedPasswords();
 };
 
-// Salva o array de senhas no localStorage
+// Salva as senhas no localStorage
 const saveToLocalStorage = () => {
   localStorage.setItem('savedPasswords', JSON.stringify(savedPasswords));
 };
 
-// Funções de Modo Claro/Escuro
-const loadDarkModePreference = () => {
-  const darkMode = localStorage.getItem('darkMode');
-  if (darkMode === 'enabled') {
-    document.body.classList.add('dark-mode');
-    darkModeToggle.innerHTML = '<i class="fa-solid fa-sun"></i>';
-  }
-};
-
-const toggleDarkMode = () => {
-  document.body.classList.toggle('dark-mode');
-  if (document.body.classList.contains('dark-mode')) {
-    localStorage.setItem('darkMode', 'enabled');
-    darkModeToggle.innerHTML = '<i class="fa-solid fa-sun"></i>';
+// Tema: utiliza localStorage para persistir a preferência
+const loadThemePreference = () => {
+  const theme = localStorage.getItem('theme') || 'dark';
+  if (theme === 'light') {
+    document.body.classList.add('light-mode');
+    themeToggle.innerHTML = '<i class="fa-solid fa-moon"></i>';
   } else {
-    localStorage.setItem('darkMode', 'disabled');
-    darkModeToggle.innerHTML = '<i class="fa-solid fa-moon"></i>';
+    document.body.classList.remove('light-mode');
+    themeToggle.innerHTML = '<i class="fa-solid fa-sun"></i>';
   }
 };
 
-darkModeToggle.addEventListener('click', toggleDarkMode);
+const toggleTheme = () => {
+  document.body.classList.toggle('light-mode');
+  if (document.body.classList.contains('light-mode')) {
+    localStorage.setItem('theme', 'light');
+    themeToggle.innerHTML = '<i class="fa-solid fa-moon"></i>';
+  } else {
+    localStorage.setItem('theme', 'dark');
+    themeToggle.innerHTML = '<i class="fa-solid fa-sun"></i>';
+  }
+};
 
-// Retorna um caractere aleatório de uma string
+themeToggle.addEventListener('click', toggleTheme);
+
+// Retorna um caractere aleatório
 const getRandomChar = (str) => str.charAt(Math.floor(Math.random() * str.length));
 
 // Gera uma nova senha
 const generatePassword = () => {
   const length = parseInt(passwordLengthIn.value) || DEFAULT_LENGTH;
   let password = "";
-  // Garante que cada conjunto de caracteres contribua com pelo menos um caractere
+  // Garante pelo menos um caractere de cada conjunto
   CHAR_SETS.forEach(set => {
     password += getRandomChar(set);
   });
-  // Preenche o restante com caracteres aleatórios de todos os conjuntos
   const allChars = CHAR_SETS.join('');
   while (password.length < length) {
     password += getRandomChar(allChars);
   }
-  // Embaralha a senha para maior aleatoriedade
+  // Embaralha a senha
   password = password.split('').sort(() => 0.5 - Math.random()).join('');
   passwordInput.value = password;
 };
@@ -108,15 +110,15 @@ copyPasswordBtn.addEventListener('click', () => {
   }
 });
 
-// Alterna a exibição do painel de opções com animação
+// Alterna exibição do painel de opções
 toggleOptionsBtn.addEventListener('click', () => {
   optionsPanel.classList.toggle('visible');
 });
 
-// Mascara a senha com bullets
+// Retorna a senha mascarada (bullets)
 const maskPassword = (password) => "•".repeat(password.length);
 
-// Atualiza a exibição das senhas salvas
+// Atualiza os cartões de senhas salvas
 const updateSavedPasswords = () => {
   savedCardsCont.innerHTML = '';
   if (savedPasswords.length === 0) {
@@ -141,7 +143,7 @@ const updateSavedPasswords = () => {
     `;
     savedCardsCont.appendChild(card);
 
-    // Eventos individuais para cada cartão
+    // Eventos individuais
     document.getElementById(`toggle-${index}`).addEventListener('click', () => {
       togglePasswordVisibility(index);
     });
@@ -154,7 +156,7 @@ const updateSavedPasswords = () => {
   });
 };
 
-// Alterna a visibilidade da senha em um cartão salvo
+// Alterna a visibilidade da senha de um cartão
 const togglePasswordVisibility = (index) => {
   const passwordSpan = document.getElementById(`saved-password-${index}`);
   const toggleIcon   = document.getElementById(`toggle-${index}`);
@@ -193,7 +195,7 @@ clearAllBtn.addEventListener('click', () => {
   }
 });
 
-// Salva a senha gerada com os dados de serviço e usuário
+// Salva a senha gerada com dados de serviço e usuário
 savePasswordBtn.addEventListener('click', () => {
   const serviceName = serviceNameIn.value.trim();
   const username    = usernameIn.value.trim();
@@ -209,16 +211,69 @@ savePasswordBtn.addEventListener('click', () => {
   saveToLocalStorage();
   updateSavedPasswords();
 
-  // Limpa os campos de serviço e usuário
+  // Limpa os campos
   serviceNameIn.value = '';
   usernameIn.value    = '';
 });
 
-// Gera uma nova senha ao clicar no botão
+// Eventos para geração de senha e carregamento inicial
 generateBtn.addEventListener('click', generatePassword);
 
-// Carrega as senhas salvas e a preferência de modo escuro ao iniciar a página
 document.addEventListener('DOMContentLoaded', () => {
   loadSavedPasswords();
-  loadDarkModePreference();
+  loadThemePreference();
+});
+
+/* -----------------------------
+   Animação de Fundo - Matrix Rain
+------------------------------ */
+const canvas = document.getElementById('bgCanvas');
+const ctx = canvas.getContext('2d');
+
+// Ajusta dimensões do canvas
+canvas.width = window.innerWidth;
+canvas.height = window.innerHeight;
+
+const letters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789@#$%&*()';
+const fontSize = 16;
+const columns = canvas.width / fontSize;
+const drops = Array(Math.floor(columns)).fill(1);
+
+function drawMatrix() {
+  // Define cores de acordo com o modo
+  let fadeColor, textColor;
+  if (document.body.classList.contains('light-mode')) {
+    // Modo claro: fundo branco com efeito de desvanecimento e texto preto
+    fadeColor = 'rgba(255, 255, 255, 0.05)';
+    textColor = '#000';
+  } else {
+    // Modo escuro: fundo preto com efeito de desvanecimento e texto verde neon
+    fadeColor = 'rgba(0, 0, 0, 0.05)';
+    textColor = '#0F0';
+  }
+  
+  // Cria o efeito de desvanecimento
+  ctx.fillStyle = fadeColor;
+  ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+  ctx.fillStyle = textColor;
+  ctx.font = fontSize + 'px monospace';
+
+  for (let i = 0; i < drops.length; i++) {
+    const text = letters.charAt(Math.floor(Math.random() * letters.length));
+    ctx.fillText(text, i * fontSize, drops[i] * fontSize);
+
+    // Reinicia a queda aleatoriamente
+    if (drops[i] * fontSize > canvas.height && Math.random() > 0.975) {
+      drops[i] = 0;
+    }
+    drops[i]++;
+  }
+}
+
+setInterval(drawMatrix, 33);
+
+window.addEventListener('resize', () => {
+  canvas.width = window.innerWidth;
+  canvas.height = window.innerHeight;
 });
