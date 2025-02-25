@@ -1,111 +1,345 @@
-*{
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: 'Poppins', sans-serif;
-}
-body{
-    background: #002339;
-    color: #fff;
+/* Importa a fonte Orbitron para uma estética futurista */
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&display=swap');
+
+/* Reset e base */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
-.cont{
-    margin: 50px;
-    margin: 12%;
-    width: 80%;
+body {
+  font-family: 'Orbitron', sans-serif;
+  background: #0D0D0D; /* Fundo preto */
+  color: #ffffff;
+  line-height: 1.6;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  transition: background 0.5s ease, color 0.5s ease;
 }
 
-.display{
-    width: 100%;
-    margin-top: 50px;
-    margin-bottom: 30px;
-    background: #fff;
-    color: #333;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 26px 20px;
-    border-radius: 5px;
+/* Cabeçalho com gradiente vibrante */
+header {
+  background: linear-gradient(135deg, #8A2BE2, #FF00FF);
+  padding: 20px;
+  text-align: center;
+  position: relative;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.5);
 }
 
-.cont h1{
-    font-weight: 500;
-    font-size: 54px;
+header .header-content {
+  animation: fadeInDown 0.8s ease-out;
 }
 
-.cont h1 span{
-    font-weight: 600;
-    color: #019f55;
-    border-bottom: 4px solid #019f55;
-    padding-bottom: 7px;
+header h1 {
+  font-size: 2.5em;
+  margin-bottom: 10px;
 }
 
-.display img{
-    width: 30px;
-    cursor: pointer;
+header p {
+  font-size: 1.2em;
 }
 
-.display input{
-    width: 100%;
-    border: 0;
-    outline: 0;
-    font-size: 24px;
+/* Botão de modo claro/escuro */
+.dark-mode-toggle {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  background: transparent;
+  border: 2px solid #00FFFF; /* Ciano Neon */
+  border-radius: 50%;
+  color: #00FFFF;
+  font-size: 1.5em;
+  cursor: pointer;
+  transition: transform 0.3s ease, border-color 0.3s ease;
+  padding: 5px;
 }
 
-.cont button img{
-    width: 28px;
-    margin-right: 10px;
+.dark-mode-toggle:hover {
+  transform: scale(1.1);
+  border-color: #FF00FF; /* Magenta */
 }
 
-.cont .generate{
-    border: 0;
-    outline: 0;
-    border-radius: 5px;
-    background-color: #019f55;
-    color: #fff;
-    font-size: 22px;
-    font-weight: 300;
-    display: flex;
-    align-content: center;
-    align-items: center;
-    justify-content: center;
-    padding: 16px 26px;
-    cursor: pointer;
+/* Container principal */
+main {
+  flex: 1;
+  width: 90%;
+  max-width: 1200px;
+  margin: 30px auto;
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
 }
 
-button{
-    font-size: 24px;
-    padding: 0px;
+/* Seção do Gerador */
+.generator-section {
+  background: #1E1E1E; /* Cinza Grafite */
+  border-radius: 12px;
+  padding: 20px;
+  box-shadow: 0 6px 12px rgba(0,0,0,0.5);
+  animation: slideIn 0.8s ease-out;
 }
 
-.btns{
-    display: flex;
-    justify-content: space-between;
+.generator-container {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
 }
 
-.btns .menu-btn{
-    border: 0;
-    outline: 0;
-    color: #fff;
-    background: transparent;
-    cursor: pointer;
+/* Área de exibição da senha gerada */
+.display {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: #0D0D0D;
+  padding: 15px 10px;
+  border-radius: 8px;
+  border: 2px solid #00FFFF;
 }
 
-.menu{
-    position: absolute;
-    width: 0%;
-    transition: all ease-in-out 0.5s;
-    transition: all ease-out 0.5s;
+.display input {
+  width: 100%;
+  border: none;
+  background: transparent;
+  font-size: 1.2em;
+  color: #ffffff;
+  outline: none;
 }
 
-.menu input{
-    outline: 0;
-    border: 0;
-    width: 100%;
-    font-size: 15px;
-    padding: 5px;
-    margin-top: 10px;
-    border-radius: 7px;
-    display: none;
-    transition: all ease-in-out 0.5s;
+.display button {
+  background: none;
+  border: none;
+  font-size: 1.5em;
+  color: #00FFFF;
+  cursor: pointer;
+  transition: color 0.3s ease;
+}
+
+.display button:hover {
+  color: #FF00FF;
+}
+
+/* Botões gerais */
+.buttons {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: #00FFFF; /* Ciano Neon */
+  color: #0D0D0D;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 50px;
+  cursor: pointer;
+  transition: background 0.3s ease, transform 0.3s ease;
+  font-size: 1em;
+}
+
+.btn:hover {
+  background: #FF00FF; /* Magenta */
+  transform: translateY(-2px);
+}
+
+/* Painel de opções */
+.options-panel {
+  display: none;
+  flex-direction: column;
+  gap: 20px;
+  margin-top: 15px;
+  animation: fadeIn 0.5s ease forwards;
+}
+
+.options-panel.visible {
+  display: flex;
+}
+
+/* Grupos de opções */
+.option-group {
+  background: #1E1E1E;
+  padding: 15px;
+  border-radius: 8px;
+  border: 2px solid #8A2BE2; /* Roxo Vibrante */
+  transition: background 0.3s ease;
+}
+
+.option-group h4 {
+  margin-bottom: 10px;
+  color: #FF00FF; /* Magenta */
+  font-size: 1.1em;
+}
+
+.option-group input {
+
+  margin-bottom: 10px;
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #00FFFF;
+  border-radius: 8px;
+  font-size: 1em;
+  outline: none;
+  background: #0D0D0D;
+  color: #ffffff;
+  transition: border-color 0.3s ease;
+}
+
+.option-group input:focus {
+  border-color: #FF00FF;
+}
+
+/* Seção das senhas salvas */
+.saved-section {
+  background: #1E1E1E;
+  border-radius: 12px;
+  padding: 20px;
+  box-shadow: 0 6px 12px rgba(0,0,0,0.5);
+  animation: slideIn 0.8s ease-out;
+}
+
+.saved-section h2 {
+  margin-bottom: 20px;
+  text-align: center;
+  color: #00FFFF;
+  font-size: 1.8em;
+}
+
+.saved-cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 20px;
+}
+
+/* Cartões de senha */
+.card {
+  background: #0D0D0D;
+  border: 2px solid #8A2BE2;
+  padding: 15px;
+  border-radius: 12px;
+  transition: transform 0.3s ease, border-color 0.3s ease;
+}
+
+.card:hover {
+  transform: translateY(-5px);
+  border-color: #FF00FF;
+}
+
+.card h3 {
+  margin-bottom: 10px;
+  color: #FF00FF;
+  font-size: 1.3em;
+}
+
+.card p {
+  font-size: 0.95em;
+  margin-bottom: 5px;
+}
+
+.card .toggle,
+.card .delete,
+.card .copy {
+  font-size: 1em;
+  margin-left: 10px;
+  cursor: pointer;
+  transition: color 0.3s ease;
+}
+
+.card .toggle:hover,
+.card .delete:hover,
+.card .copy:hover {
+  color: #00FFFF;
+}
+
+/* Mensagem para "Nenhuma senha salva" */
+.no-saved {
+  font-size: 1.1em;
+  text-align: center;
+  color: #888;
+  padding: 20px 0;
+}
+
+/* Botão para limpar todas as senhas */
+.btn.clear {
+  background: #FF00FF;
+  margin: 20px auto 0;
+  display: block;
+  border-radius: 50px;
+}
+
+.btn.clear:hover {
+  background: #00FFFF;
+}
+
+/* Footer fixo na parte inferior */
+footer {
+  background: #0D0D0D;
+  color: #00FFFF;
+  text-align: center;
+  padding: 15px 10px;
+  font-size: 0.9em;
+  width: 100%;
+}
+
+/* Garante que o footer permaneça no final */
+body {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+main {
+  flex: 1;
+}
+
+/* Animações */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(-10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes slideIn {
+  from { opacity: 0; transform: translateX(-20px); }
+  to { opacity: 1; transform: translateX(0); }
+}
+
+@keyframes fadeInDown {
+  from { opacity: 0; transform: translateY(-20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* Responsividade */
+@media (max-width: 768px) {
+  header h1 {
+    font-size: 2em;
+  }
+  header p {
+    font-size: 1em;
+  }
+  .btn {
+    padding: 8px 16px;
+    font-size: 0.9em;
+  }
+  .option-group h4 {
+    font-size: 1em;
+  }
+  .saved-section h2 {
+    font-size: 1.6em;
+  }
+}
+
+@media (max-width: 480px) {
+  .generator-container, .saved-section {
+    padding: 15px;
+  }
+  .display input {
+    font-size: 1em;
+  }
+  .card h3 {
+    font-size: 1.1em;
+  }
 }

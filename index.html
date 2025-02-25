@@ -1,32 +1,77 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-BR">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Gerador de Senhas by King</title>
-    <link rel="stylesheet" href="static/css/style.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Gerenciador de Senhas - Cyberpunk</title>
+  <!-- Importa a fonte futurista Orbitron -->
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="static/css/style.css">
+  <script src="https://kit.fontawesome.com/1f26dd467f.js" crossorigin="anonymous"></script>
 </head>
 <body>
-
-    <div class="cont">
-        <h1>Gerador Rapido de<br /><span>Senhas Fortes</span></h1>
-        <div class="display">
-            <input type="text" name="pass" id="password" placeholder="Senha Gerada">
-            <img src="images/copy.png" onclick="CopyPass()">
-        </div>
-
-        <div class="btns">            
-            <button class="generate"><img src="images/generate.png" alt="">+ Nova Senha</button>
-            <button onclick="MenuDisplay()" class="menu-btn"><i class="fa-solid fa-chevron-right"></i> Opções</button>
-        </div>
-
-
-        <div class="menu">
-            <input type="number" id="password-length" placeholder="Tamanho da Senha">
-        </div>
+  <header>
+    <div class="header-content">
+      <h1>Gerenciador de Senhas</h1>
+      <p>Ferramenta segura e futurista para suas senhas</p>
     </div>
+    <button id="dark-mode-toggle" class="btn dark-mode-toggle" title="Alternar modo claro/escuro">
+      <i class="fa-solid fa-moon"></i>
+    </button>
+  </header>
 
-    <script src="https://kit.fontawesome.com/1f26dd467f.js" crossorigin="anonymous"></script>
-    <script src="static/js/script.js"></script>
+  <main>
+    <!-- Seção do Gerador -->
+    <section class="generator-section">
+      <div class="generator-container">
+        <div class="display">
+          <input type="text" id="password" placeholder="Senha Gerada" readonly aria-label="Senha Gerada">
+          <button id="copy-password-btn" aria-label="Copiar Senha">
+            <i class="fa-solid fa-copy"></i>
+          </button>
+        </div>
+
+        <div class="buttons">
+          <button id="generate-password" class="btn generate">
+            <i class="fa-solid fa-key"></i> Nova Senha
+          </button>
+          <button id="toggle-options" class="btn options">
+            <i class="fa-solid fa-sliders"></i> Opções
+          </button>
+        </div>
+
+        <!-- Painel de Opções com grupos separados -->
+        <div id="options-panel" class="options-panel">
+          <div class="option-group">
+            <h4>Tamanho da Senha</h4>
+            <input type="number" id="password-length" placeholder="Ex: 12" min="4" aria-label="Tamanho da Senha">
+          </div>
+          <div class="option-group">
+            <h4>Dados de Serviço</h4>
+            <input type="text" id="service-name" placeholder="Nome do Serviço" aria-label="Nome do Serviço">
+            <input type="text" id="username" placeholder="Nome do Usuário" aria-label="Nome do Usuário">
+            <button id="save-password" class="btn save">
+              <i class="fa-solid fa-save"></i> Salvar Senha
+            </button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Seção das Senhas Salvas -->
+    <section class="saved-section">
+      <h2>Senhas Salvas</h2>
+      <div class="saved-cards">
+        <!-- Os cartões serão inseridos dinamicamente -->
+      </div>
+      <button id="clear-all" class="btn clear">Limpar Todas as Senhas</button>
+    </section>
+  </main>
+
+  <footer>
+    <p>&copy; 2025 Gerenciador de Senhas. Todos os direitos reservados.</p>
+  </footer>
+
+  <script src="static/js/script.js"></script>
 </body>
 </html>
